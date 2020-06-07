@@ -1,4 +1,4 @@
-ROM python:3-slim
+FROM python:3-slim
 WORKDIR /usr/src/app
 
 COPY ./app/requirements.txt ./
