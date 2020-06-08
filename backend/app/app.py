@@ -1,37 +1,41 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
+from database.db import initialize_db
+from database.models import Subreddit
 
 app = Flask(__name__)
 
-subreddits = [
-    {
-        "name": "Formula 1",
-        "url": "formula1"
-    },
-    {
-        "name": "IndyCar",
-        "url": "indycar"
-    }
-]
+app.config['MONGODB_SETTINGS'] = {
+    'host': 'mongodb://mongo/redditclone'
+}
 
-@app.route('/')
+initialize_db(app)
+
+@app.route('/subreddits')
 def get_subreddits():
-    return jsonify(subreddits)
+    subreddits = Subreddit.objects().to_json()
+    return Response(subreddits, mimetype="application/json", status=200)
+
+@app.route('/subreddits/<id>')
+def get_movie(id):
+    subreddits = Subreddit.objects.get(id=id).to_json()
+    return Response(subreddits, mimetype="application/json", status=200)
 
 @app.route('/subreddits', methods=["POST"])
 def add_subreddit():
-    subreddit = request.get_json()
-    subreddits.append(subreddit)
-    return {'id': len(subreddits)}, 200
+    body = request.get_json()
+    subreddit = Subreddit(**body).save()
+    id = subreddit.id
+    return {'id': str(id)}, 200
 
 @app.route('/subreddits/<int:index>', methods=['PUT'])
 def update_subreddit(index):
-    subreddit = request.get_json()
-    subreddits[index] = subreddit
-    return jsonify(subreddits[index]), 200
+    body = request.get_json()
+    Subreddit.objects.get(id=id).update(**body)
+    return '', 200
 
 @app.route('/subreddits/<int:index>', methods=['DELETE'])
 def delete_subreddit(index):
-    subreddits.pop(index)
-    return 'None', 200
+    Subreddit.objects.get(id=id).delete()
+    return '', 200
 
 app.run(host="0.0.0.0", port = 5000,debug=True)

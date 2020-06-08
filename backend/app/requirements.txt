@@ -1,6 +1,7 @@
 flask
 flask-restful
 mongoengine
+flask-mongoengine
 flask-marshmallow
 flask-bcrypt
 flask-jwt-extended

@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  service:
+  backend:
     build: ./backend
     volumes:
       - ./backend/app:/usr/src/app
@@ -14,15 +14,13 @@ services:
       WORK_ENV: DEV
     command: bash -c "python app.py"
     restart: unless-stopped
-  # service:
-  #   build: ./frontend
-  #   volumes:
-  #   ports:
-  #   environment:
-  #   restart: unless-stopped
-  # database:
-  #   build: ./database
-  #   volumes:
-  #   ports:
-  #   environment:
-  #   restart: unless-stopped
+    
+  mongo:
+    image: mongo
+    volumes:
+      - ./database/data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081

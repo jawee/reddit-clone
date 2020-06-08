@@ -1,1 +1,4 @@
 .DS_Store
+database/data/*
+!database/data/.gitkeep
+backend/app/database/__pycache__/
