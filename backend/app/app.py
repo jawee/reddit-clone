@@ -13,10 +13,6 @@ api = Api(app, errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-app.config['MONGODB_SETTINGS'] = {
-    'host': 'mongodb://mongo/redditclone'
-}
-
 initialize_db(app)
 initialize_routes(api)
 
