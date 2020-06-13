@@ -1,6 +1,7 @@
 from .subreddit import SubredditsApi, SubredditApi
 from .thread import ThreadApi, ThreadsApi
 from .auth import SignupApi, LoginApi
+from .comment import CommentApi, CommentsApi
 
 def initialize_routes(api):
     api.add_resource(SubredditsApi, '/api/subreddits')
@@ -9,4 +10,5 @@ def initialize_routes(api):
     api.add_resource(LoginApi, '/api/auth/login')
     api.add_resource(ThreadsApi, '/api/threads')
     api.add_resource(ThreadApi, '/api/thread/<id>')
- 
+    api.add_resource(CommentsApi, '/api/comments')
+    api.add_resource(CommentApi, '/api/comment/<id>')
