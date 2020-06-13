@@ -1,4 +1,5 @@
 flask
+bson
 python-dotenv
 flask-restful
 mongoengine

@@ -13,8 +13,9 @@ services:
       #FLASK_APP: app.py
       WORK_ENV: DEV
       ENV_FILE_LOCATION: ./.env
-    command: bash -c "python app.py"
-    restart: unless-stopped
+      PYTHONUNBUFFERED: 1
+      #command: bash -c "python app.py"
+    command: python -u app.py
     
   mongo:
     image: mongo

@@ -1,13 +1,12 @@
 from flask import Response, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from database.models import Subreddit, User
+from database.models import Subreddit, User, Thread, Comment
 from flask_restful import Resource
 
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
 from resources.errors import SchemaValidationError, SubredditAlreadyExistsError, InternalServerError, UpdatingSubredditError, DeletingSubredditError, SubredditNotExistsError
 
 class SubredditsApi(Resource):
-    @jwt_required
     def get(self):
         subreddits = Subreddit.objects().to_json()
         return Response(subreddits, mimetype="application/json", status=200)
@@ -18,7 +17,7 @@ class SubredditsApi(Resource):
             user_id = get_jwt_identity()
             body = request.get_json()
             user = User.objects.get(id=user_id)
-            subreddit = Subreddit(**body, added_by=user)
+            subreddit = Subreddit(**body, created_by=user)
             subreddit.save()
             user.update(push__subreddits=subreddit)
             user.save()
@@ -32,7 +31,6 @@ class SubredditsApi(Resource):
             raise InternalServerError
 
 class SubredditApi(Resource):
-    @jwt_required
     def get(self, id):
         try:
             subreddits = Subreddit.objects.get(id=id).to_json()
@@ -46,7 +44,7 @@ class SubredditApi(Resource):
     def put(self, id):
         try:
             user_id = get_jwt_identity()
-            subreddit = Subreddit.objects.get(id=id, added_by=user_id)
+            subreddit = Subreddit.objects.get(id=id, created_by=user_id)
             body = request.get_json()
             Subreddit.objects.get(id=id).update(**body)
             return '', 200
@@ -61,7 +59,7 @@ class SubredditApi(Resource):
     def delete(self, id):
         try:
             user_id = get_jwt_identity()
-            subreddit = Subreddit.objects.get(id=id, added_by=user_id)
+            subreddit = Subreddit.objects.get(id=id, created_by=user_id)
             subreddit.delete()
             return '', 200
         except DoesNotExist:

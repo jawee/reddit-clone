@@ -24,6 +24,18 @@ class EmailAlreadyExistsError(HTTPException):
 class UnauthorizedError(HTTPException):
   pass
 
+class NotExistsError(HTTPException):
+    pass
+
+class AlreadyExistsError(HTTPException):
+    pass
+
+class UpdatingError(HTTPException):
+    pass
+
+class DeletingError(HTTPException):
+    pass
+
 errors = {
   "InternalServerError": {
     "message": "Something went wrong",
@@ -56,5 +68,21 @@ errors = {
   "UnauthorizedError": {
     "message": "Invalid username or password",
     "status": 401
+  },
+  "NotExistsError": {
+    "message": "Entity with given id doesn't exists",
+    "status": 400
+  },
+  "AlreadyExistsError": {
+    "message": "Entity with given name already exists",
+    "status": 400
+  },
+  "UpdatingError": {
+    "message": "Updating entity added by other is forbidden",
+    "status": 403
+  },
+  "DeletingError": {
+    "message": "Deleting subreddit added by other is forbidden",
+    "status": 403
   }
 }
