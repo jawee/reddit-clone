@@ -3,3 +3,4 @@ database/data/*
 !database/data/.gitkeep
 backend/app/database/__pycache__/
 __pycache__/
+.vim

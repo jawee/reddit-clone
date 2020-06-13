@@ -12,6 +12,7 @@ services:
       FLASK_ENV: development
       #FLASK_APP: app.py
       WORK_ENV: DEV
+      ENV_FILE_LOCATION: ./.env
     command: bash -c "python app.py"
     restart: unless-stopped
     
