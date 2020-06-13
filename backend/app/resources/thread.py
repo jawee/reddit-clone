@@ -21,7 +21,7 @@ class ThreadsApi(Resource):
             user = User.objects.get(id=user_id)
             subreddit_id = ObjectId(body['subreddit'])
             subreddit = Subreddit.objects.get(id=subreddit_id)
-            thread = Thread(**body, created_by=user) # created_at=datetime.datetime.utcnow())
+            thread = Thread(**body, created_by=user)
             thread.save()
             user.update(push__threads=thread)
             user.save()
@@ -30,12 +30,10 @@ class ThreadsApi(Resource):
             id = thread.id
             return {'id': str(id)}, 200
         except (FieldDoesNotExist, ValidationError) as exc:
-            print(exc)
             raise SchemaValidationError
         except NotUniqueError:
             raise AlreadyExistsError
         except Exception as e:
-            print(e)
             raise InternalServerError
 
 class ThreadApi(Resource):
