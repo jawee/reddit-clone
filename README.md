@@ -2,8 +2,8 @@
 
 React frontend
 
-TBD backend
+Python backend
 
-TBD database
+Mongodb database
 
 Run in docker
