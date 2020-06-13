@@ -34,6 +34,7 @@ class ThreadsApi(Resource):
         except NotUniqueError:
             raise AlreadyExistsError
         except Exception as e:
+            print(e)
             raise InternalServerError
 
 class ThreadApi(Resource):
