@@ -1,12 +1,16 @@
 from .db import db
 from flask_bcrypt import generate_password_hash, check_password_hash
+from flask_restful_swagger import swagger
 import datetime
+
+@swagger.model
 class Subreddit(db.Document):
     name = db.StringField(required=True, unique=True)
     url = db.StringField(required=True, unique=True)
     created_by = db.ReferenceField('User')
     threads = db.SortedListField(db.ReferenceField('Thread'))
 
+@swagger.model
 class User(db.Document):
     email = db.EmailField(required=False, unique=True)
     username = db.StringField(required=True, unique=True)
@@ -22,6 +26,7 @@ class User(db.Document):
         return check_password_hash(self.password, password)
 
 
+@swagger.model
 class Thread(db.Document):
     title = db.StringField(required=True)
     content = db.StringField(required=True)
@@ -30,6 +35,7 @@ class Thread(db.Document):
     comments = db.SortedListField(db.ReferenceField('Comment'))
     subreddit = db.ReferenceField('Subreddit')
 
+@swagger.model
 class Comment(db.Document):
     content = db.StringField(required=True)
     created_by = db.ReferenceField('User')

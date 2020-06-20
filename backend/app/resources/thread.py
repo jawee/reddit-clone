@@ -2,6 +2,7 @@ from flask import Response, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from database.models import Subreddit, User, Thread, Comment
 from flask_restful import Resource
+from flask_restful_swagger import swagger
 from bson.objectid import ObjectId
 import datetime
 
@@ -9,11 +10,13 @@ from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, 
 from resources.errors import SchemaValidationError, SubredditAlreadyExistsError, InternalServerError, UpdatingSubredditError, DeletingSubredditError, SubredditNotExistsError, NotExistsError, AlreadyExistsError, UpdatingError, DeletingError
 
 class ThreadsApi(Resource):
+    @swagger.operation()
     def get(self):
         threads = Thread.objects().to_json()
         return Response(threads, mimetype="application/json", status=200)
 
     @jwt_required
+    @swagger.operation()
     def post(self):
         try:
             user_id = get_jwt_identity()
@@ -38,6 +41,7 @@ class ThreadsApi(Resource):
             raise InternalServerError
 
 class ThreadApi(Resource):
+    @swagger.operation()
     def get(self, id):
         try:
             thread = Thread.objects.get(id=id).to_json()
@@ -48,6 +52,7 @@ class ThreadApi(Resource):
             raise InternalServerError
 
     @jwt_required
+    @swagger.operation()
     def put(self, id):
         try:
             user_id = get_jwt_identity()
@@ -63,6 +68,7 @@ class ThreadApi(Resource):
             raise InternalServerError
 
     @jwt_required
+    @swagger.operation()
     def delete(self, id):
         try:
             user_id = get_jwt_identity()

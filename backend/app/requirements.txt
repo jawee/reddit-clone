@@ -7,3 +7,4 @@ flask-mongoengine
 flask-marshmallow
 flask-bcrypt
 flask-jwt-extended
+flask-restful-swagger

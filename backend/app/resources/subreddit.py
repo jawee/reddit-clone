@@ -2,16 +2,20 @@ from flask import Response, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from database.models import Subreddit, User, Thread, Comment
 from flask_restful import Resource
+from flask_restful_swagger import swagger
 
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
 from resources.errors import SchemaValidationError, SubredditAlreadyExistsError, InternalServerError, UpdatingSubredditError, DeletingSubredditError, SubredditNotExistsError
 
 class SubredditsApi(Resource):
+    "Getting a list of all subreddits"
+    @swagger.operation()
     def get(self):
         subreddits = Subreddit.objects().to_json()
         return Response(subreddits, mimetype="application/json", status=200)
 
     @jwt_required
+    @swagger.operation()
     def post(self):
         try:
             user_id = get_jwt_identity()
@@ -31,6 +35,7 @@ class SubredditsApi(Resource):
             raise InternalServerError
 
 class SubredditApi(Resource):
+    @swagger.operation()
     def get(self, id):
         try:
             subreddits = Subreddit.objects.get(id=id).to_json()
@@ -41,6 +46,7 @@ class SubredditApi(Resource):
             raise InternalServerError
 
     @jwt_required
+    @swagger.operation()
     def put(self, id):
         try:
             user_id = get_jwt_identity()
@@ -56,6 +62,7 @@ class SubredditApi(Resource):
             raise InternalServerError
 
     @jwt_required
+    @swagger.operation()
     def delete(self, id):
         try:
             user_id = get_jwt_identity()
