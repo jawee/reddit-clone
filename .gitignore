@@ -4,3 +4,4 @@ database/data/*
 backend/app/database/__pycache__/
 __pycache__/
 .vim
+*.log

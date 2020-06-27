@@ -5,6 +5,7 @@ services:
     build: ./backend
     volumes:
       - ./backend/app:/usr/src/app
+      - ./backend/logs:/usr/logs
     ports:
       - 5000:5000
     environment:
