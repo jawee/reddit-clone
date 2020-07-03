@@ -1,10 +1,16 @@
 import React from 'react';
 import SubredditList from './components/subreddit-list';
+import Navbar from './components/navbar';
 
-function App() {
+class App extends React.Component {
+  render() {
   return (
-    <SubredditList />
+    <div>
+      <Navbar />
+      <SubredditList />
+    </div>
   );
+  }
 }
 
 export default App;
