@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class SubredditList extends React.Component {
 
@@ -34,7 +35,7 @@ class SubredditList extends React.Component {
     return (
       <ul>
         {subreddits.map((subreddit, i) => {
-          return (<SubredditListListItem subreddit={subreddit} />)
+          return (<SubredditListListItem key={subreddit.name} subreddit={subreddit} />)
         })}
       </ul>
     );
@@ -43,8 +44,9 @@ class SubredditList extends React.Component {
 
 class SubredditListListItem extends React.Component {
   render() {
+    const url = "/subreddit/" + this.props.subreddit.url;
     return (
-      <li>{this.props.subreddit.name}</li>
+      <li><NavLink to={url}>{this.props.subreddit.name}</NavLink></li>
     );
   }
 }

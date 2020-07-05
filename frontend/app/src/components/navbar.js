@@ -12,19 +12,19 @@ export default class Navbar extends React.Component {
 
     return (
       <HashRouter>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">Reddit Clone</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-sm navbar-light bg-light">
+          <div className="container">
+            <a className="navbar-brand" href="/">Reddit Clone</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Subreddits</a>
+                <li className="nav-item">
+                  <NavLink to="/subreddits" className="nav-link">Subreddits</NavLink>
                 </li>
               </ul>
             </div>
