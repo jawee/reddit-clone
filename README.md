@@ -1,9 +1,9 @@
 # Reddit Clone
 
-Some frontend
-Python backend
-Mongodb database
-Run in docker
+- Some frontend
+- Python backend
+- Mongodb database
+- Run in docker
 
 ### Todo
 - [ ] Frontend framework
