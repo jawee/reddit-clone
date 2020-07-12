@@ -1,53 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import subreddits from './../data/subreddits';
 
-class SubredditList extends React.Component {
+function SubredditList() {
+  return (
+    <ul>
+      {subreddits.map((subreddit, i) => {
+        return (<SubredditListListItem key={subreddit.name} subreddit={subreddit} />)
+      })}
+    </ul>
+  );
 
-  render() {
-    const subreddits = [
-      {
-        "_id": {
-          "$oid": "5ee4f687f2a019d5b1f6e535"
-        },
-        "name": "WEC",
-        "url": "wec",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "threads": [
-          {
-            "$oid": "5ee4f6ef04d091af0994789f"
-          }
-        ]
-      },
-      {
-        "_id": {
-          "$oid": "5eff4fb1cac303868aef1ba9"
-        },
-        "name": "Formula 1",
-        "url": "formula1",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "threads": []
-      }
-    ];
-    return (
-      <ul>
-        {subreddits.map((subreddit, i) => {
-          return (<SubredditListListItem key={subreddit.name} subreddit={subreddit} />)
-        })}
-      </ul>
-    );
-  }
 }
 
-class SubredditListListItem extends React.Component {
-  render() {
-    const url = "/subreddit/" + this.props.subreddit.url;
-    return (
-      <li><NavLink to={url}>{this.props.subreddit.name}</NavLink></li>
-    );
-  }
+function SubredditListListItem({ subreddit }) {
+  const url = "/subreddit/" + subreddit.url;
+  return (
+    <li><NavLink to={url}>{subreddit.name}</NavLink></li>
+  );
+
 }
-export default  SubredditList;
+export default SubredditList;

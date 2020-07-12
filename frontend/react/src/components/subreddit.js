@@ -1,106 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route,  NavLink, useParams, useRouteMatch } from 'react-router-dom';
+import { useParams }  from 'react-router-dom';
+import subreddits from './../data/subreddits';
 
-export default class Subreddit extends React.Component {
-  render() {
-    const subreddits = [
-      {
-        "_id": {
-          "$oid": "5ee4f687f2a019d5b1f6e535"
-        },
-        "name": "WEC",
-        "url": "wec",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "threads": [
-          {
-            "$oid": "5ee4f6ef04d091af0994789f"
-          }
-        ]
-      },
-      {
-        "_id": {
-          "$oid": "5eff4fb1cac303868aef1ba9"
-        },
-        "name": "Formula 1",
-        "url": "formula1",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "threads": []
-      }
-    ]; 
-    const subreddit_id = "5eff4fb1cac303868aef1ba9";
-    const threads = [
-      {
-        "_id": {
-          "$oid": "5ee4f6ef04d091af0994789f"
-        },
-        "title": "My super title",
-        "content": "Some long text",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "created_at": {
-          "$date": 1592063727270
-        },
-        "comments": [
-          {
-            "$oid": "5ee4f7c3ed45ffa229b9f466"
-          }
-        ],
-        "subreddit": {
-          "$oid": "5ee4f687f2a019d5b1f6e535"
-        }
-      },
-      {
-        "_id": {
-          "$oid": "5eff8c0ecac303868aef1baa"
-        },
-        "title": "F1 is back",
-        "content": "Bacon ipsum dolor amet bacon salami venison, turducken t-bone pancetta spare ribs tail shankle biltong ball tip. Chislic tail spare ribs bresaola cupim chicken. Tail salami swine chuck pancetta leberkas shankle fatback ball tip kevin ground round chislic. Burgdoggen salami meatball, beef boudin drumstick frankfurter. Pork turducken kevin corned beef t-bone kielbasa pork loin sausage hamburger meatloaf jowl ham drumstick. Short loin boudin drumstick burgdoggen ground round chislic.",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "created_at": {
-          "$date": 1593805838179
-        },
-        "comments": [],
-        "subreddit": {
-          "$oid": "5eff4fb1cac303868aef1ba9"
-        }
-      },
-      {
-        "_id": {
-          "$oid": "5eff8c19cac303868aef1bab"
-        },
-        "title": "DAS is awesome",
-        "content": "Bacon ipsum dolor amet bacon salami venison, turducken t-bone pancetta spare ribs tail shankle biltong ball tip. Chislic tail spare ribs bresaola cupim chicken. Tail salami swine chuck pancetta leberkas shankle fatback ball tip kevin ground round chislic. Burgdoggen salami meatball, beef boudin drumstick frankfurter. Pork turducken kevin corned beef t-bone kielbasa pork loin sausage hamburger meatloaf jowl ham drumstick. Short loin boudin drumstick burgdoggen ground round chislic.",
-        "created_by": {
-          "$oid": "5ee4f678f2a019d5b1f6e534"
-        },
-        "created_at": {
-          "$date": 1593805849784
-        },
-        "comments": [],
-        "subreddit": {
-          "$oid": "5eff4fb1cac303868aef1ba9"
-        }
-      }
-    ];
-    let { path, url } = useRouteMatch();
-    return (
-      <div className="container">Show subreddit shizzle</div>
-    );
-  }
+function findSubredditFromUrl(url) {
+  let subredditObj = null;
+  subreddits.map((subreddit, i) => {
+    if(subreddit.url === url) {
+      subredditObj = subreddit;
+    }
+  });
+
+  return subredditObj;
 }
 
 
-class SubredditInternal extends React.Component {
-  render() {
-    return (
-      <div>In a subreddit</div>
-    );
-  }
+function Subreddit() {
+  const subreddit_id = "5eff4fb1cac303868aef1ba9";
+  let { subredditUrl } = useParams();
+  let subreddit = findSubredditFromUrl(subredditUrl);
+  return (
+    <div className="container">
+      <SubredditInternal subreddit={subreddit} />
+    </div>
+  );
+}
+
+export default Subreddit;
+
+function SubredditInternal({ subreddit }) { 
+  return (
+    <div>{subreddit.name}</div>
+  );
 }

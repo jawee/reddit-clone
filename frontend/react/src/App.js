@@ -5,21 +5,19 @@ import Home from './components/home';
 import Subreddit from './components/subreddit';
 import { Route, HashRouter} from 'react-router-dom';
 
-class App extends React.Component {
-  render() {
-    return (
-      <HashRouter>
-        <div>
-          <Navbar />
-          <div className="container">
-            <Route exact path="/" component={Home}/>
-            <Route path="/subreddits" component={SubredditList}/>
-            <Route path="/subreddit/:subredditUrl"><Subreddit /></Route>
-          </div>
+function App() {
+  return (
+    <HashRouter>
+      <div>
+        <Navbar />
+        <div className="container">
+          <Route exact path="/" component={Home}/>
+          <Route path="/subreddits" component={SubredditList}/>
+          <Route path="/subreddit/:subredditUrl"><Subreddit /></Route>
         </div>
-      </HashRouter>
-    );
-  }
+      </div>
+    </HashRouter>
+  );
 }
 
 export default App;
