@@ -1,8 +1,8 @@
 import React from 'react';
-import SubredditList from './components/subreddit-list';
-import Navbar from './components/navbar';
-import Home from './components/home';
-import Subreddit from './components/subreddit';
+import SubredditList from './components/Subreddit-list';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Subreddit from './components/Subreddit';
 import { Route, HashRouter} from 'react-router-dom';
 
 function App() {

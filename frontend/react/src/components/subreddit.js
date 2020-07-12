@@ -28,7 +28,12 @@ function Subreddit() {
 export default Subreddit;
 
 function SubredditInternal({ subreddit }) { 
+  console.log(subreddit);
   return (
-    <div>{subreddit.name}</div>
+    <div>
+    {subreddit.name}
+    {/* list threads */}
+    </div>
+    
   );
 }
