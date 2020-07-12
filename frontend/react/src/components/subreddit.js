@@ -4,13 +4,7 @@ import subreddits from './../data/subreddits';
 import Thread from './Thread';
 
 function findSubredditFromUrl(url) {
-  let subredditObj = null;
-  subreddits.map((subreddit, i) => {
-    if(subreddit.url === url) {
-      subredditObj = subreddit;
-    }
-  });
-
+  let subredditObj = subreddits.find(subreddit => subreddit.url === url);
   return subredditObj;
 }
 
