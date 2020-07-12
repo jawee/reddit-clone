@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams }  from 'react-router-dom';
 import subreddits from './../data/subreddits';
+import Thread from './Thread';
 
 function findSubredditFromUrl(url) {
   let subredditObj = null;
@@ -15,7 +16,6 @@ function findSubredditFromUrl(url) {
 
 
 function Subreddit() {
-  const subreddit_id = "5eff4fb1cac303868aef1ba9";
   let { subredditUrl } = useParams();
   let subreddit = findSubredditFromUrl(subredditUrl);
   return (
@@ -28,11 +28,14 @@ function Subreddit() {
 export default Subreddit;
 
 function SubredditInternal({ subreddit }) { 
-  console.log(subreddit);
   return (
     <div>
-    {subreddit.name}
-    {/* list threads */}
+      <h1>{subreddit.name}</h1>
+      {subreddit.threads.map((thread, i) => {
+        return (
+          <Thread key={thread.$oid} threadId={thread} />
+        );
+      })}
     </div>
     
   );
