@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import subreddits from './../data/subreddits';
 
 function SubredditList() {
-  return (
-    <ul>
-      {subreddits.map((subreddit, i) => {
-        return (<SubredditListListItem key={subreddit.name} subreddit={subreddit} />)
-      })}
-    </ul>
-  );
+  const [subreddits, setSubreddits] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/subreddits').then(res => res.json()).then((result) => {
+      setSubreddits(result);
+      setIsLoaded(true);
+    }
+      , (error) => {
+        console.log(error);
+      });
+  }, []);
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <ul>
+        {subreddits.map((subreddit, i) => {
+          return (<SubredditListListItem key={subreddit.name} subreddit={subreddit} />)
+        })}
+      </ul>
+    );
+  }
 
 }
 
