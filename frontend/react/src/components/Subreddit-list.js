@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import * as Constants from '../utilities/constants';
 
 function SubredditList() {
   const [subreddits, setSubreddits] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/subreddits').then(res => res.json()).then((result) => {
+    fetch(Constants.BASE_URL + Constants.API_URL + Constants.SUBREDDIT_ENDPOINT).then(res => res.json()).then((result) => {
       setSubreddits(result);
       setIsLoaded(true);
     }

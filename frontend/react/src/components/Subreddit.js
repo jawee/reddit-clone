@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams }  from 'react-router-dom';
-import subreddits from './../data/subreddits';
 import Thread from './Thread';
-
-function findSubredditFromUrl(url) {
-  let subredditObj = subreddits.find(subreddit => subreddit.url === url);
-  return subredditObj;
-}
-
+import * as Constants from '../utilities/constants';
 
 function Subreddit() {
   let { subredditUrl } = useParams();
-  let subreddit = findSubredditFromUrl(subredditUrl);
-  return (
-    <div className="container">
-      <SubredditInternal subreddit={subreddit} />
-    </div>
-  );
+  const [subreddit, setSubreddit] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch(Constants.BASE_URL + Constants.API_URL + Constants.SUBREDDIT_URL_ENDPOINT + '/' + subredditUrl).then(res => res.json()).then((result) => {
+      setSubreddit(result);
+      setIsLoaded(true);
+    }, (error) => {
+      console.log(error);
+    });
+  }, [subredditUrl]);
+
+  if (!isLoaded) {
+    return <div>Loading...</div>
+  } else {
+    return (
+      <div className="container">
+        <SubredditInternal subreddit={subreddit} />
+      </div>
+    );
+  }
 }
 
 export default Subreddit;
@@ -31,6 +40,6 @@ function SubredditInternal({ subreddit }) {
         );
       })}
     </div>
-    
+
   );
 }
