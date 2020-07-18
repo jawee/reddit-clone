@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams }  from 'react-router-dom';
-import Thread from './Thread';
+import ThreadList from './ThreadList';
 import * as Constants from '../utilities/constants';
 
 function Subreddit() {
@@ -9,12 +9,14 @@ function Subreddit() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(Constants.BASE_URL + Constants.API_URL + Constants.SUBREDDIT_URL_ENDPOINT + '/' + subredditUrl).then(res => res.json()).then((result) => {
-      setSubreddit(result);
-      setIsLoaded(true);
-    }, (error) => {
-      console.log(error);
-    });
+    fetch(Constants.BASE_URL + Constants.API_URL + Constants.SUBREDDIT_URL_ENDPOINT + '/' + subredditUrl)
+      .then(res => res.json())
+      .then((result) => {
+        setSubreddit(result);
+        setIsLoaded(true);
+      }, (error) => {
+        console.log(error);
+      });
   }, [subredditUrl]);
 
   if (!isLoaded) {
@@ -36,7 +38,7 @@ function SubredditInternal({ subreddit }) {
       <h1>{subreddit.name}</h1>
       {subreddit.threads.map((thread, i) => {
         return (
-          <Thread key={thread.$oid} threadId={thread} />
+          <ThreadList key={thread.$oid} threadId={thread.$oid} />
         );
       })}
     </div>
