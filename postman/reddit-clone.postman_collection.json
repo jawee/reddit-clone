@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "ed16c92f-709c-403e-9322-e952ac375626",
+		"name": "reddit-clone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Subreddits",
+			"item": [
+				{
+					"name": "Get Subreddits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwMzAxNTMsIm5iZiI6MTU5MjAzMDE1MywianRpIjoiZGNlMzI1YzItMzk1Ny00Mjg1LWFjODEtZjc2YTg0OWY5ZTBiIiwiZXhwIjoxNTkyNjM0OTUzLCJpZGVudGl0eSI6IjVlZGU0OTgwZTY3OTc4YWI1MGI3YTQ5OSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.aJ64ADaC1j_W_mZYSakP6-Fwsm3ySHgw3FLlZIoSonY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTExNjIsIm5iZiI6MTU5MjA1MTE2MiwianRpIjoiMTVkYTNhY2QtMjVjOC00NDc4LWJjYjItOTA0YjZiMmE3ZTdhIiwiZXhwIjoxNTkyNjU1OTYyLCJpZGVudGl0eSI6IjVlZTRiZDI2OGQwNmU4OGI5YjJhNzNhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.tU91GsDvQuuAWm7K4mvEfB9cSmVsrLuzZ-SgDR_GnOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4e7bf126740325c663baa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4e7bf126740325c663baa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTM3OTAzMzcsIm5iZiI6MTU5Mzc5MDMzNywianRpIjoiOTBmNTdhMWMtMjM3ZS00OTEwLWI4NDctZDViNjNjOGI3NWRjIiwiZXhwIjoxNTk0Mzk1MTM3LCJpZGVudGl0eSI6IjVlZTRmNjc4ZjJhMDE5ZDViMWY2ZTUzNCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.MnZ-nTwydZpo8gumM9Q5yCxo-VNH6EzPIrTrRvUqFro",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Formula 1\",\n    \"url\": \"formula1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTMyMDIsIm5iZiI6MTU5MjA1MzIwMiwianRpIjoiNjYwZTljYzItM2Y2OC00MDdlLWE5ODMtMzk3OWUxYmUyYzYyIiwiZXhwIjoxNTkyNjU4MDAyLCJpZGVudGl0eSI6IjVlZTRjZGNlMWM3OTZkOGUwOGRlY2UzMyIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wjkb4I1JCeA-sFP0EeZyz8WVjmcqh7i467ljcV9S_qc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"INDYCAR\",\n    \"url\": \"indycar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4cde21c796d8e08dece34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4cde21c796d8e08dece34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subreddit",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/subreddits/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"subreddits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Threads",
+			"item": [
+				{
+					"name": "Get Threads",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwMzAxNTMsIm5iZiI6MTU5MjAzMDE1MywianRpIjoiZGNlMzI1YzItMzk1Ny00Mjg1LWFjODEtZjc2YTg0OWY5ZTBiIiwiZXhwIjoxNTkyNjM0OTUzLCJpZGVudGl0eSI6IjVlZGU0OTgwZTY3OTc4YWI1MGI3YTQ5OSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.aJ64ADaC1j_W_mZYSakP6-Fwsm3ySHgw3FLlZIoSonY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/threads",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"threads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTExNjIsIm5iZiI6MTU5MjA1MTE2MiwianRpIjoiMTVkYTNhY2QtMjVjOC00NDc4LWJjYjItOTA0YjZiMmE3ZTdhIiwiZXhwIjoxNTkyNjU1OTYyLCJpZGVudGl0eSI6IjVlZTRiZDI2OGQwNmU4OGI5YjJhNzNhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.tU91GsDvQuuAWm7K4mvEfB9cSmVsrLuzZ-SgDR_GnOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4cde21c796d8e08dece34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4cde21c796d8e08dece34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Thead",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTM4MDU3NTAsIm5iZiI6MTU5MzgwNTc1MCwianRpIjoiYmMxZGY1MTAtMTI4YS00MjA3LWJkNWQtZGNjNDZhMzQxMDIyIiwiZXhwIjoxNTk0NDEwNTUwLCJpZGVudGl0eSI6IjVlZTRmNjc4ZjJhMDE5ZDViMWY2ZTUzNCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.n3f0QmYT4NXF38zDx8O6SzDnIN_NV6-H1yjo0XRSIQI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"DAS is awesome\",\n    \"content\": \"Bacon ipsum dolor amet bacon salami venison, turducken t-bone pancetta spare ribs tail shankle biltong ball tip. Chislic tail spare ribs bresaola cupim chicken. Tail salami swine chuck pancetta leberkas shankle fatback ball tip kevin ground round chislic. Burgdoggen salami meatball, beef boudin drumstick frankfurter. Pork turducken kevin corned beef t-bone kielbasa pork loin sausage hamburger meatloaf jowl ham drumstick. Short loin boudin drumstick burgdoggen ground round chislic.\",\n    \"subreddit\": \"5eff4fb1cac303868aef1ba9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/threads",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"threads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTMyMDIsIm5iZiI6MTU5MjA1MzIwMiwianRpIjoiNjYwZTljYzItM2Y2OC00MDdlLWE5ODMtMzk3OWUxYmUyYzYyIiwiZXhwIjoxNTkyNjU4MDAyLCJpZGVudGl0eSI6IjVlZTRjZGNlMWM3OTZkOGUwOGRlY2UzMyIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wjkb4I1JCeA-sFP0EeZyz8WVjmcqh7i467ljcV9S_qc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"INDYCAR\",\n    \"url\": \"indycar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4cde21c796d8e08dece34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4cde21c796d8e08dece34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subreddit",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/subreddits/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"subreddits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwMzAxNTMsIm5iZiI6MTU5MjAzMDE1MywianRpIjoiZGNlMzI1YzItMzk1Ny00Mjg1LWFjODEtZjc2YTg0OWY5ZTBiIiwiZXhwIjoxNTkyNjM0OTUzLCJpZGVudGl0eSI6IjVlZGU0OTgwZTY3OTc4YWI1MGI3YTQ5OSIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.aJ64ADaC1j_W_mZYSakP6-Fwsm3ySHgw3FLlZIoSonY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTExNjIsIm5iZiI6MTU5MjA1MTE2MiwianRpIjoiMTVkYTNhY2QtMjVjOC00NDc4LWJjYjItOTA0YjZiMmE3ZTdhIiwiZXhwIjoxNTkyNjU1OTYyLCJpZGVudGl0eSI6IjVlZTRiZDI2OGQwNmU4OGI5YjJhNzNhZCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.tU91GsDvQuuAWm7K4mvEfB9cSmVsrLuzZ-SgDR_GnOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4cde21c796d8e08dece34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4cde21c796d8e08dece34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNjM2MTIsIm5iZiI6MTU5MjA2MzYxMiwianRpIjoiN2M5N2ZkY2MtMDQzZi00M2NkLWExZWUtZmNlMTg2ZjM5ZjMxIiwiZXhwIjoxNTkyNjY4NDEyLCJpZGVudGl0eSI6IjVlZTRmNjc4ZjJhMDE5ZDViMWY2ZTUzNCIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.bAhBxcQ66trs38PVmoG5dVokrtHH_o2fTRFuuQOZKD0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Some long text\",\n    \"thread\": \"5ee4f6ef04d091af0994789f\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Subreddit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTIwNTMyMDIsIm5iZiI6MTU5MjA1MzIwMiwianRpIjoiNjYwZTljYzItM2Y2OC00MDdlLWE5ODMtMzk3OWUxYmUyYzYyIiwiZXhwIjoxNTkyNjU4MDAyLCJpZGVudGl0eSI6IjVlZTRjZGNlMWM3OTZkOGUwOGRlY2UzMyIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.wjkb4I1JCeA-sFP0EeZyz8WVjmcqh7i467ljcV9S_qc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"INDYCAR\",\n    \"url\": \"indycar\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/subreddits/5ee4cde21c796d8e08dece34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subreddits",
+								"5ee4cde21c796d8e08dece34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subreddit",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/subreddits/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"subreddits",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password\",\n\t\"username\": \"user1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password\",\n\t\"username\": \"user1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

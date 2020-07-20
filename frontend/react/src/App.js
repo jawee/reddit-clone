@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SubredditList from './components/Subreddit-list';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Subreddit from './components/Subreddit';
+import Login from './components/Login';
+import { Route, HashRouter} from 'react-router-dom';
+import Thread from './components/Thread';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div>
+        <Navbar />
+        <div className="container">
+          <Route exact path="/" component={Home}/>
+          <Route path="/subreddits" component={SubredditList}/>
+          <Route path="/subreddit/:subredditUrl/thread/:threadId"><Thread /></Route>
+          <Route exact path="/subreddit/:subredditUrl/"><Subreddit /></Route>
+          <Route path="/login"><Login /></Route>
+        </div>
+      </div>
+    </HashRouter>
   );
 }
 
