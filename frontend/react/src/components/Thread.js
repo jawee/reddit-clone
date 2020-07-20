@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as Constants from '../utilities/constants';
-import '../utilities/actions';
+import * as Actions from '../utilities/actions';
 
 function Thread() {
   let { threadId } = useParams();
@@ -11,7 +11,7 @@ function Thread() {
 
   useEffect(() => {
 
-    fetchResource(Constants.THREAD_ENDPOINT, threadId)
+    Actions.fetchResource(Constants.THREAD_ENDPOINT, threadId)
       .then((result) => {
         setThread(result);
         setIsLoaded(true);
@@ -25,7 +25,7 @@ function Thread() {
     if(thread.length === 0) {
       return;
     }
-    getUsernameFromId(thread.created_by.$oid)
+    Actions.getUsernameFromId(thread.created_by.$oid)
       .then((result) => {
         setUsername(result.username);
       }, (error) => {
@@ -61,7 +61,7 @@ function Comment({ commentId }) {
   const [username, setUsername] = useState([]);
 
   useEffect(() => {
-    fetchResource(Constants.COMMENT_ENDPOINT, commentId)
+    Actions.fetchResource(Constants.COMMENT_ENDPOINT, commentId)
       .then((result) => {
         setComment(result);
         setIsLoaded(true);
@@ -77,7 +77,7 @@ useEffect(() => {
     if(comment.length === 0) {
       return;
     }
-    getUsernameFromId(comment.created_by.$oid)
+    Actions.getUsernameFromId(comment.created_by.$oid)
       .then((result) => {
         setUsername(result.username);
       }, (error) => {

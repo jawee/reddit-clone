@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Constants from '../utilities/constants';
-import '../utilities/actions';
+import * as Actions from '../utilities/actions';
 
 function SubredditList() {
   const [subreddits, setSubreddits] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetchResource(Constants.SUBREDDIT_ENDPOINT)
+    Actions.fetchResource(Constants.SUBREDDIT_ENDPOINT)
       .then((result) => {
         setSubreddits(result);
         setIsLoaded(true);
