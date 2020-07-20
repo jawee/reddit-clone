@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams }  from 'react-router-dom';
 import ThreadList from './ThreadList';
 import * as Constants from '../utilities/constants';
+import '../utilities/actions';
 
 function Subreddit() {
   let { subredditUrl } = useParams();
@@ -9,8 +10,7 @@ function Subreddit() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(Constants.BASE_URL + Constants.API_URL + Constants.SUBREDDIT_URL_ENDPOINT + '/' + subredditUrl)
-      .then(res => res.json())
+    fetchResource(Constants.SUBREDDIT_URL_ENDPOINT, subredditUrl)
       .then((result) => {
         setSubreddit(result);
         setIsLoaded(true);

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import * as Constants from '../utilities/constants';
 import { NavLink } from 'react-router-dom';
-
+import '../utilities/actions';
 
 function ThreadList({threadId}) {
   const [thread, setThread] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-   fetch(Constants.BASE_URL + Constants.API_URL + Constants.THREAD_ENDPOINT + '/' + threadId)
-      .then(res => res.json())
+   fetchResource(Constants.THREAD_ENDPOINT, threadId) 
       .then((result) => {
         setThread(result);
         setIsLoaded(true);
