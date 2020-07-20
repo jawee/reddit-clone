@@ -6,6 +6,9 @@ import datetime
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist
 from resources.errors import SchemaValidationError, EmailAlreadyExistsError, UnauthorizedError, InternalServerError
 
+from resources.logging import MyLog
+
+log = MyLog()
 class SignupApi(Resource):
  def post(self):
     try:
@@ -30,11 +33,11 @@ class LoginApi(Resource):
         authorized = user.check_password(body.get('password'))
         if not authorized:
             raise UnauthorizedError
-
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=str(user.id), expires_delta=expires)
         return {'token': access_token}, 200
     except (UnauthorizedError, DoesNotExist):
+        log.debug("User unauthorized")
         raise UnauthorizedError
     except Exception as e:
         raise InternalServerError
