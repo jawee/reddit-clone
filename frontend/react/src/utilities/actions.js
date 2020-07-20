@@ -9,3 +9,7 @@ export function fetchResource(endpoint, id) {
 
   return fetch(url).then(res => res.json());
 }
+
+export function getUsernameFromId(uid) {
+  return fetchResource(Constants.USER_ENDPOINT, uid);
+}
