@@ -4,3 +4,4 @@ export const SUBREDDIT_ENDPOINT = '/subreddits';
 export const THREAD_ENDPOINT = '/threads';
 export const COMMENT_ENDPOINT = '/comments';
 export const SUBREDDIT_URL_ENDPOINT = '/subredditbyurl';
+export const USER_ENDPOINT = '/users';
