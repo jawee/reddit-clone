@@ -1,5 +1,5 @@
 import React from 'react';
-import SubredditList from './components/Subreddit-list';
+import SubredditList from './components/SubredditList';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Subreddit from './components/Subreddit';
