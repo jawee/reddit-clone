@@ -3,9 +3,12 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from database.models import Subreddit, User, Thread, Comment
 from flask_restful import Resource
 
+from resources.logging import MyLog
+
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
 from resources.errors import SchemaValidationError, SubredditAlreadyExistsError, InternalServerError, UpdatingSubredditError, DeletingSubredditError, SubredditNotExistsError
 
+log = MyLog()
 class SubredditsApi(Resource):
     def get(self):
         subreddits = Subreddit.objects().to_json()
@@ -18,6 +21,7 @@ class SubredditsApi(Resource):
             body = request.get_json()
             user = User.objects.get(id=user_id)
             subreddit = Subreddit(**body, created_by=user)
+            subreddit["url"] = getUrlFromName(subreddit["name"])
             subreddit.save()
             user.update(push__subreddits=subreddit)
             user.save()
@@ -30,6 +34,11 @@ class SubredditsApi(Resource):
         except Exception as e:
             raise InternalServerError
 
+def getUrlFromName(name):
+    log.debug(name)
+    url = name.replace(" ", "-")
+    return url
+
 class SubredditApi(Resource):
     def get(self, id):
         try:
@@ -37,7 +46,7 @@ class SubredditApi(Resource):
             return Response(subreddits, mimetype="application/json", status=200)
         except DoesNotExist:
             raise SubredditNotExistsError
-        except Exception:
+        except Exception as e:
             raise InternalServerError
 
     @jwt_required
