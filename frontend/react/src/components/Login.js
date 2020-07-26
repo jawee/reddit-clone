@@ -10,7 +10,7 @@ function Login() {
 
 
   useEffect(() => {
-    var tokenIsSet = localStorage.getItem(Constants.AUTH_TOKEN_NAME) !== null ? true : false;
+    var tokenIsSet = localStorage.getItem(Constants.AUTH_TOKEN_NAME) ? true : false;
 
     setIsLoggedIn(tokenIsSet);
 

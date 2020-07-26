@@ -11,11 +11,13 @@ function NavbarLogin() {
 
   useEffect(() => {
     let token = localStorage.getItem(Constants.AUTH_TOKEN_NAME);
-    let tokenIsSet = token !== null ? true : false;
+    let tokenIsSet = token ? true : false;
     setIsLoggedIn(tokenIsSet);
 
-    let decodedToken = JSON.parse(atob(token.split('.')[1])); 
-    setUserId(decodedToken.identity);
+    if(isLoggedIn) {
+      let decodedToken = JSON.parse(atob(token.split('.')[1])); 
+      setUserId(decodedToken.identity);
+    }
   }, [localStorage.getItem(Constants.AUTH_TOKEN_NAME)]);
 
   useEffect(() => {
