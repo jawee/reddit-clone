@@ -9,7 +9,7 @@ function SubredditList() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   let token = localStorage.getItem(Constants.AUTH_TOKEN_NAME);
-  let tokenIsSet = token !== null ? true : false;
+  let tokenIsSet = token ? true : false;
   let isLoggedIn = tokenIsSet;
 
   useEffect(() => {
@@ -22,6 +22,7 @@ function SubredditList() {
           console.log(error);
         });
   }, []);
+  console.log(isLoggedIn);
 
   if (!isLoaded) {
     return <div>Loading...</div>;
